@@ -1,0 +1,27 @@
+# whitelist: only the pipeline core is versioned
+/*
+!/.gitignore
+!/.gitmodules
+!/README.md
+!/pyproject.toml
+!/uv.lock
+!/pipeline.py
+!/nemo_stage.py
+!/av_stage.py
+!/test_pipeline.py
+!/eval_*.py
+!/tools/
+!/data/
+!/third_party/
+/third_party/*
+!/third_party/LR-ASD
+/data/*
+!/data/ava_dev.list
+!/data/ava_test.list
+!/data/ava_av_clean.list
+!/data/tos/
+/data/tos/*
+!/data/tos/script.txt
+!/data/tos/TOS-en.srt
+!/data/tos/TOS-ru.srt
+__pycache__/

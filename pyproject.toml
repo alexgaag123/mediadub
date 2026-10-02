@@ -1,0 +1,15 @@
+[project]
+name = "dub-markup"
+version = "0.1.0"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "audio-separator[gpu]",
+  "nvidia-cublas-cu12",
+  "nvidia-cudnn-cu12",
+  "scikit-learn>=1.9.1",
+  "scipy>=1.18.1",
+  "wespeaker",
+]
+
+[tool.uv.sources]
+wespeaker = { git = "https://github.com/wenet-e2e/wespeaker.git" }
