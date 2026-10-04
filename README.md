@@ -3,7 +3,7 @@
 Annual project for the Artificial Intelligence master's program, 2026/27
 academic year.
 
-[Русская версия](README.md)
+[Русская версия](README_RU.md)
 
 ## Project Idea
 
