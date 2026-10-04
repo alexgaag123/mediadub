@@ -1,3 +1,5 @@
+# Automatic Video Translation and Voice-Over
+
 ![Automatic video translation and voice-over pipeline](project-banner.png)
 
 Annual project for the Artificial Intelligence master's program, 2026/27
