@@ -29,7 +29,7 @@ First-semester user scenario:
 | Original content analysis | Alexey, Alexander G. | Audio preparation, enhancement, VAD, segmentation, diarization, ASR, and quality evaluation | Utterances with timings, voice IDs, character names, and source text |
 | Translation and dubbing | Alexander K., Nikita | Translation, voice cloning, speech synthesis, duration fitting, and final assembly | Translated and dubbed video |
 
-Supervisor: **add the supervisor's full name**.
+Supervisor: Nikita Karagodin.
 
 ### Proposed Individual Responsibilities
 
@@ -194,8 +194,6 @@ approximate deadlines.
 - agree on the interface between the two groups;
 - create the GitHub repository;
 - document the topic, team, supervisor, architecture, metrics, and checkpoints;
-- provide instructions for running the current prototype;
-- define storage rules for large videos, models, and generated artifacts.
 
 **Deliverable:** repository, README files, responsibility assignment, and annual
 plan. Every team member submits the repository link to the peer-review system
@@ -362,104 +360,6 @@ The final presentation demonstrates:
 - add MLflow, reproducibility, and robustness analysis;
 - optimize the final service.
 
-## Current Prototype Status
-
-A baseline of the first stage has been prepared for all 18 episodes of season
-one:
-
-- ASR and diarization are ready for 18 of 18 episodes;
-- 2,107 utterances have been collected;
-- English and Russian subtitles have been extracted;
-- a mono 16 kHz downmix has been prepared;
-- faster-whisper ASR has been completed;
-- Nemotron 3 diarization has been completed;
-- a season-wide `all_utterances.csv` has been generated;
-- text and speaker review flags have been added.
-
-Not implemented yet:
-
-- neural enhancement before VAD;
-- a manually verified WER/CER/VAD/DER/SER reference set;
-- translation;
-- TTS/voice cloning;
-- duration fitting and final assembly;
-- FastAPI and Telegram bot.
-
-The current prototype uses a center-oriented downmix and the VAD built into
-faster-whisper. It is a baseline, not the final target architecture.
-
-## Current Output Structure
-
-```text
-analysis_output/
-  season_index.csv
-  all_utterances.csv
-  season_analysis_summary.csv
-  S01E01/
-    audio/
-      en_center_48k.flac
-      en_asr_16k.wav
-    subtitles/
-      en_sdh.srt
-      ru.srt
-    asr/
-      faster_whisper.jsonl
-      faster_whisper.srt
-      vad.jsonl
-    diarization/
-      nemotron.rttm
-    metadata/
-      analysis_manifest.csv
-      character_map.csv
-      character_map_inferred.csv
-      utterances.csv
-```
-
-## Running the Current Prototype
-
-### 1. Prepare Audio and Subtitles
-
-```powershell
-& 'C:\Users\Алексей\AppData\Local\Programs\Python\Python312\python.exe' `
-  .\scripts\prepare_media.py
-```
-
-### 2. ASR and Review Manifest
-
-```powershell
-.\.venv\Scripts\python.exe .\scripts\run_asr_all.py
-```
-
-### 3. Diarization
-
-```powershell
-.\.venv\Scripts\python.exe .\scripts\run_diarization.py
-```
-
-### 4. Season-Wide Table
-
-```powershell
-.\.venv\Scripts\python.exe .\scripts\export_season.py
-```
-
-For a single episode:
-
-```powershell
-.\.venv\Scripts\python.exe .\scripts\run_asr.py --episode S01E01 --model base.en
-.\.venv\Scripts\python.exe .\scripts\build_manifest.py --episode S01E01
-.\.venv\Scripts\python.exe .\scripts\merge_rttm.py --episode S01E01
-```
-
-## Limitations
-
-- `speaker_N` is local to one video and is not a character name;
-- SDH subtitles help with transcripts and some names but still require review;
-- WER/CER calculated from unverified subtitles are only approximate;
-- DER/SER cannot be calculated without a manually verified RTTM file;
-- enhancement may improve VAD/ASR while damaging unusual voices and
-  diarization;
-- all videos and models must be used in compliance with their licenses and
-  copyright restrictions.
 
 ## Definition of Done
 
