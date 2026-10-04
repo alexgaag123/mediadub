@@ -26,8 +26,8 @@ First-semester user scenario:
 
 | Group | Members | Area of responsibility | Output for the next group |
 |---|---|---|---|
-| Original content analysis | Alexey, Alexander G. | Audio preparation, enhancement, VAD, segmentation, diarization, ASR, and quality evaluation | Utterances with timings, voice IDs, character names, and source text |
-| Translation and dubbing | Alexander K., Nikita | Translation, voice cloning, speech synthesis, duration fitting, and final assembly | Translated and dubbed video |
+| Original content analysis | Alexey Neurov, Alexander Gaag | Audio preparation, enhancement, VAD, segmentation, diarization, ASR, and quality evaluation | Utterances with timings, voice IDs, character names, and source text |
+| Translation and dubbing | Alexander Kovylev, Nikita Panov | Translation, voice cloning, speech synthesis, duration fitting, and final assembly | Translated and dubbed video |
 
 Supervisor: Nikita Karagodin.
 
