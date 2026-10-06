@@ -28,7 +28,7 @@ First-semester user scenario:
 
 | Group | Members | Area of responsibility | Output for the next group |
 |---|---|---|---|
-| Original content analysis | Alexey Neurov, Alexander Gaag | Audio preparation, enhancement, VAD, segmentation, diarization, ASR, and quality evaluation | Utterances with timings, voice IDs, character names, and source text |
+| Original content analysis | Alexey Neurov, Alexander Gaag | Audio preparation, enhancement, VAD, segmentation, diarization, ASR, and quality evaluation | Utterances with timings, voice IDs, and recognized source text |
 | Translation and dubbing | Alexander Kovylev, Nikita Panov | Translation, voice cloning, speech synthesis, duration fitting, and final assembly | Translated and dubbed video |
 
 Supervisor: Nikita Karagodin.
@@ -43,9 +43,10 @@ proposal is:
 - **Alexander G.:** diarization, ASR, manual ground-truth annotation,
   WER/CER/VAD/DER/SER evaluation, and error analysis;
 - **Alexander K.:** context-aware translation that accounts for terminology,
-  utterance length, and the original timing;
-- **Nikita:** voice cloning/TTS, prosody, duration fitting, audio mixing, and
-  final video assembly.
+  utterance length, and the original timing; TTS and voice cloning jointly with
+  Nikita;
+- **Nikita:** TTS and voice cloning jointly with Alexander K., prosody, duration
+  fitting, audio mixing, and final video assembly.
 
 The whole team contributes to FastAPI and Telegram bot integration. Every stage
 must have an owner, while the data contract between the two groups is agreed on
@@ -70,7 +71,7 @@ Utterance segmentation
   ↓
 16 kHz ASR: source text and word timings
   ↓
-speaker_N → character mapping
+speaker_N → voice reference mapping
   ↓
 Timing-constrained translation
   ↓
@@ -113,11 +114,8 @@ The first group passes a single utterance manifest to the second group:
 | `utterance_id` | Unique utterance ID |
 | `start`, `end`, `duration` | Timing in seconds |
 | `diarization_speaker` | Episode-local technical voice ID |
-| `character_name` | Verified character name, when known |
-| `text` | Verified source transcript |
+| `text` | Recognized source transcript |
 | `style_hint` | Whisper, shout, radio, accent, or another delivery style |
-| `text_needs_review` | Whether the transcript requires manual review |
-| `speaker_needs_review` | Whether the speaker requires manual review |
 | `speech_audio_path` | Path to the enhanced utterance audio |
 
 The second group adds:
@@ -125,11 +123,9 @@ The second group adds:
 | Field | Meaning |
 |---|---|
 | `translated_text` | Translated utterance |
-| `translation_status` | Automatic/manual review status |
 | `voice_reference_id` | Character voice reference ID |
 | `synthesized_audio_path` | Path to synthesized speech |
 | `duration_error_ms` | Difference from the source duration |
-| `tts_needs_review` | Whether synthesized speech requires review |
 
 ## Quality Metrics
 
@@ -145,9 +141,7 @@ The second group adds:
 - **DER** — false alarm speech, missed speech, and speaker confusion divided by
   the total reference speech duration;
 - **SER** — the proportion of speech time assigned to the wrong speaker. This
-  exact definition of SER must be retained in all reports;
-- **Character accuracy/coverage** — the proportion of correctly identified
-  characters and the proportion of utterances for which a name is available.
+  exact definition of SER must be retained in all reports.
 
 A fixed test split that is never used for parameter tuning is required for fair
 evaluation. The initial split must include clean dialogue, music, radio speech,
@@ -165,20 +159,37 @@ whispers, shouts, and overlapping speakers.
 
 Voice cloning quality is evaluated with several complementary measures:
 
-- **speaker similarity** — косинусная близость эмбеддинга оригинального и
-  синтезированного голоса;
-- **MOS 1–5** — ручная оценка естественности и общего качества;
-- **similarity MOS 1–5** — насколько синтезированный голос похож на персонажа;
-- **ASR WER/CER синтеза** — понятно ли произнесён переведённый текст;
-- **MCD** - сравнение оригинала и синтеза по спектрограммам.
-- **F0/prosody** — сходство высоты тона, пауз, энергии и эмоционального рисунка;
-- **duration error** — отличие от исходного временного окна;
-- **clipping и loudness** — отсутствие перегруза и заметных скачков громкости.
-- **RTF** - отношение времени обработки к времени оригинального аудио. На будущее для возможности использования в real-time. 
+- **speaker similarity** — cosine similarity between the original and synthesized
+  voice embeddings;
+- **MOS 1–5** — human ratings of naturalness and overall quality;
+- **similarity MOS 1–5** — human ratings of how closely the synthesized voice
+  resembles the character's voice;
+- **synthesized-speech ASR WER/CER** — intelligibility of the translated text;
+- **MCD** — comparison of the original and synthesized speech spectrograms;
+- **F0/prosody** — similarity of pitch, pauses, energy, and emotional patterns;
+- **duration error** — deviation from the original time window;
+- **clipping and loudness** — absence of clipping and noticeable loudness jumps;
+- **RTF** — processing time divided by the source audio duration, to assess
+  prospects for real-time operation.
 
 All TTS models must be evaluated on the same characters, utterances, and texts.
 Human ratings should be collected from several listeners, not only from the
 model developer.
+
+## Initial Experiment
+
+- **Dataset:** bazinga.
+- **Initial language pair:** English → Russian (En → Ru).
+- **Model comparison:** at least three models for each model-based component:
+  enhancement, VAD, diarization, ASR, translation, and TTS/voice cloning.
+- **Data volume:** the subset size, total audio duration, and train/validation/test
+  split will be defined and recorded during EDA.
+- **Hardware:** the CPU/GPU configuration, available memory, and software
+  environment will be recorded in the experiment report.
+
+Models for the same component are compared on the same fixed evaluation subset.
+Each run records model versions, parameters, quality metrics, runtime, and memory
+consumption.
 
 ## Checkpoint Plan
 
@@ -231,17 +242,17 @@ annotation guide, and a fixed test split.
 
 **First group:**
 
-- compare one or two ready-made enhancement models;
-- run a baseline VAD system;
-- compare ASR models using WER/CER;
-- run Nemotron and an alternative diarizer and measure DER/SER;
+- compare at least three ready-made enhancement models;
+- compare at least three VAD models;
+- compare at least three ASR models using WER/CER;
+- compare at least three diarization models, including Nemotron, using DER/SER;
 - run an A/B test of `enhancement → VAD` against `VAD without enhancement`;
 - record configurations, runtime, and memory consumption.
 
 **Second group:**
 
-- select a translation baseline;
-- test at least two ready-made TTS/voice-cloning models;
+- compare at least three translation models and select a baseline;
+- compare at least three ready-made TTS/voice-cloning models;
 - implement text and audio fitting to the source timing;
 - measure speaker similarity, MOS, synthesized-speech WER, and duration error.
 
@@ -280,7 +291,8 @@ and scripts, demonstrating the complete video-to-translated-video workflow.
 - present the architecture and each member's contribution;
 - report baseline metrics for every pipeline stage;
 - analyze successful and failed examples;
-- define the second-semester fine-tuning plan.
+- define the second-semester fine-tuning plan and the transition from the
+  Telegram bot to a web service.
 
 ### Checkpoint 5. ML Model Improvement — March 15, 23:59
 
@@ -326,14 +338,16 @@ final metrics, and representative errors.
 - run load and robustness tests;
 - measure runtime, memory use, and maximum supported video length;
 - prepare final charts, tables, and an ablation study;
-- document the API, bot, and local setup;
+- implement a website for video upload, language selection, processing status,
+  and result download using the existing FastAPI service;
+- document the API, website, and local setup;
 - document limitations and future work.
 
 ### Final Project Presentation — June 13–20
 
 The final presentation demonstrates:
 
-- a stable Telegram bot and the full end-to-end workflow;
+- a stable web service and the full end-to-end workflow;
 - baseline versus improved system results;
 - WER, CER, VAD Precision/Recall/F1, DER, and SER;
 - translation and speech synthesis metrics;
@@ -352,7 +366,7 @@ The final presentation demonstrates:
 - complete end-to-end baseline;
 - fixed test set and initial metrics.
 
-### Second Semester: Data, Fine-Tuning, and Quality
+### Second Semester: Data, Fine-Tuning, Quality, and a Web Service
 
 - expand the manual annotations;
 - improve WER/CER/DER/SER;
@@ -360,14 +374,20 @@ The final presentation demonstrates:
 - improve prosody and voice similarity;
 - reduce duration error;
 - add MLflow, reproducibility, and robustness analysis;
+- transition from the Telegram bot to a web service with a website interface;
 - optimize the final service.
 
 
 ## Definition of Done
 
-The project is considered complete when:
+Exact acceptance criteria, including timing-error limits and target quality
+improvements, will be defined after a working baseline has been built and
+evaluated. They will be recorded before evaluating the improved system.
 
-1. The Telegram bot accepts a video and returns a dubbed result.
+The preliminary completion criteria are:
+
+1. The web service accepts a video through the website and returns a dubbed
+   result.
 2. Every pipeline stage can be reproduced from a clean environment.
 3. Metrics for every stage are reported on the fixed test split.
 4. The improved system is compared with the first-semester baseline.
