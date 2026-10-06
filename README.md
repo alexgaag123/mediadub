@@ -165,16 +165,16 @@ whispers, shouts, and overlapping speakers.
 
 Voice cloning quality is evaluated with several complementary measures:
 
-- **speaker similarity** — cosine similarity between embeddings of the source
-  and synthesized voices;
-- **MOS 1–5** — human evaluation of naturalness and overall quality;
-- **similarity MOS 1–5** — human evaluation of resemblance to the character;
-- **ASR WER/CER of synthesized speech** — intelligibility of the translated
-  utterance;
-- **F0/prosody** — similarity of pitch, pauses, energy, and emotional contour;
-- **duration error** — deviation from the original time window;
-- **clipping and loudness** — absence of overload and distracting loudness
-  changes.
+- **speaker similarity** — косинусная близость эмбеддинга оригинального и
+  синтезированного голоса;
+- **MOS 1–5** — ручная оценка естественности и общего качества;
+- **similarity MOS 1–5** — насколько синтезированный голос похож на персонажа;
+- **ASR WER/CER синтеза** — понятно ли произнесён переведённый текст;
+- **MCD** - сравнение оригинала и синтеза по спектрограммам.
+- **F0/prosody** — сходство высоты тона, пауз, энергии и эмоционального рисунка;
+- **duration error** — отличие от исходного временного окна;
+- **clipping и loudness** — отсутствие перегруза и заметных скачков громкости.
+- **RTF** - отношение времени обработки к времени оригинального аудио. На будущее для возможности использования в real-time. 
 
 All TTS models must be evaluated on the same characters, utterances, and texts.
 Human ratings should be collected from several listeners, not only from the
