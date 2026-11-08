@@ -1,8 +1,8 @@
-import time
 import os
+import time
 
 import media_dub.common.database as db
-from media_dub.common.s3_sevice import save_text_to_s3, load_text_from_s3, generate_temporary_url
+from media_dub.common.s3_sevice import generate_temporary_url, load_text_from_s3, save_text_to_s3
 from media_dub.pipeline.celery_app import app
 from media_dub.pipeline.stage_translation.tasks import translation_task
 
@@ -26,11 +26,8 @@ if __name__ == "__main__":
     translation_task.apply_async(
         args=[seg_id], queue="translation_queue"
     )
+    print("submitted job")
 
-    time.sleep(5)
-
-    result = load_text_from_s3("english-text", f"{seg_id}.txt")
-    
     url = generate_temporary_url("english-text", f"{seg_id}.txt")
 
     print(url)
