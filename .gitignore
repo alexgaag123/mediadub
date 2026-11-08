@@ -1,2 +1,18 @@
 .DS_Store
 .env
+
+# Виртуальное окружение uv
+.venv/
+
+# Кэш Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Дистрибуция и сборка
+build/
+dist/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
