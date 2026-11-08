@@ -24,6 +24,13 @@ translation = [
     "torch>=2.0.0"    
 ]
 
+voice-over = [
+    "soundfile>=0.14.0",
+    "omnivoice>=0.2.1",
+    "torch>=2.0.0",
+    "torchaudio>=2.0.0"
+]
+
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/media_dub"]

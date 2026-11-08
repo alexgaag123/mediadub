@@ -1,10 +1,6 @@
 import logging
 
-import ctranslate2
-import torch
 from celery.signals import worker_process_init
-from huggingface_hub import snapshot_download
-from transformers import AutoTokenizer
 
 import media_dub.common.database as db
 from media_dub.common.s3_sevice import load_text_from_s3, save_text_to_s3
@@ -13,6 +9,11 @@ from media_dub.pipeline.celery_app import app
 
 class TranslationWorkerModelNLLB200:
     def __init__(self):
+        import ctranslate2
+        import torch
+        from huggingface_hub import snapshot_download
+        from transformers import AutoTokenizer
+
         app.logger.info("Init nllb-200-1.3B-ct2 worker start")
 
         self.device = "cuda" if torch.cuda.is_available() else "cpu"

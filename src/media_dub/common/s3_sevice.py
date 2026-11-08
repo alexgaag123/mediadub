@@ -1,9 +1,9 @@
 import os
+from typing import Optional
 
 import boto3
 from botocore.client import Config
 from botocore.exceptions import ClientError
-from typing import Optional
 
 S3_IP = os.getenv("IP")
 S3_PORT = os.getenv("MINIO_PORT")
@@ -47,7 +47,7 @@ def save_text_to_s3(bucket_name: str, file_name: str, text_content: str) -> None
     )
 
 def generate_temporary_url(bucket_name: str, object_key: str,
-                           expiration_seconds: int = 600) -> Optional[str]:
+                           expiration_seconds: int = 600) -> str | None:
     """
     Generate tmp url for storage:bucket:name. Return as string
     """
