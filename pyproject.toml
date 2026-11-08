@@ -1,0 +1,43 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "media_dub"
+version = "0.1.0"
+requires-python = "==3.13.*"
+dependencies = [
+    "boto3>=1.43.123",
+    "sqlalchemy>=2.1.8",
+    "psycopg>=3.3.8",
+    "ruff>=0.6",
+    "mypy>=1.11",
+    "pre-commit>=3.8",
+    "celery>=5.4.0",
+]
+
+[dependency-groups]
+translation = [
+    "ctranslate2>=4.0.0",
+    "transformers>=4.40.0",
+    "huggingface_hub>=0.23.0",
+    "torch>=2.0.0"    
+]
+
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/media_dub"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "W",
+    "I",
+    "UP",
+]
+
+[tool.mypy]
+strict = true
