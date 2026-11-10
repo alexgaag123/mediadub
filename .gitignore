@@ -12,6 +12,7 @@
 !/eval_*.py
 !/tools/
 !/speech2text/
+!/diarization/
 !/eda/
 !/data/
 !/third_party/
