@@ -176,6 +176,16 @@ All TTS models must be evaluated on the same characters, utterances, and texts.
 Human ratings should be collected from several listeners, not only from the
 model developer.
 
+## Experiment Notebook
+
+[Speech synthesis and voice cloning benchmark](notebooks/voice-cloning-benchmark.ipynb)
+contains Bazinga/FLORES-200 data analysis, TTS comparisons, voice similarity and
+intelligibility metrics, and three EN→RU pipeline examples.
+
+Run it in Google Colab or Kaggle with a GPU and `HF_TOKEN` configured in Secrets.
+Start with section 1. Setup, cache handling, and model limitations are described
+in the notebook. FLORES-200 is used only for analysis and evaluation.
+
 ## Initial Experiment
 
 - **Dataset:** bazinga.
