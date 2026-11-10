@@ -4,6 +4,7 @@
 пол и возраст говорящего. Это вход для следующих этапов: перевода и TTS с клонированием голоса. Сам дубляж здесь не делается.
 
 [Чекпоинт по диаризации](diarization/README.md) — прогон Friends, оценка на MELD и протокол DER/SER.
+[Эксперименты](experiments/README.md) — Parakeet v2/v3, Nemotron 3.5 Transcribe и Community‑1.
 
 ## Выход
 

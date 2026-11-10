@@ -13,6 +13,12 @@
 !/tools/
 !/speech2text/
 !/diarization/
+!/experiments/
+/experiments/**/out/
+/experiments/**/.envs/
+/experiments/**/*.wav
+/experiments/**/*.nemo
+/experiments/**/*.gguf
 !/eda/
 !/data/
 !/third_party/
