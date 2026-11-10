@@ -1,0 +1,416 @@
+{
+  "dataset_sha256": "42c9050796d5e29c34ca095b95a6481d46dac1a62d3ac8b88a5950d106dcdfef",
+  "method": "Approximate manual title windows for this BDRip only. Intro candidates from raw subtitle gaps, checked against overview frames; no automatic gap deletion. End tails begin three seconds after the final caption; credits over dialogue are preserved. S01E17 has no separate opening song in the inspected early sequence. Not verified by listening.",
+  "sources": [
+    "https://www.startribune.com/tv-q-a-the-long-and-short-of-friends-theme-song/201694851",
+    "https://theses.gla.ac.uk/7282/7/2016bellphd.pdf"
+  ],
+  "evidence": "out/friends_s01_20261110_no_titles/evidence/overview_0.jpg through overview_3.jpg",
+  "episodes": {
+    "S01E01": [
+      {
+        "start": 0,
+        "end": 47.881,
+        "reason": "Opening song and adjacent caption-free transition"
+      },
+      {
+        "start": 1361.439,
+        "end": 1369.44,
+        "reason": "Post-caption credit tail, three-second margin; final dialogue retained"
+      }
+    ],
+    "S01E02": [
+      {
+        "start": 70.787,
+        "end": 125.334,
+        "reason": "Opening song and adjacent caption-free transition"
+      },
+      {
+        "start": 1363.985,
+        "end": 1372.448,
+        "reason": "Post-caption credit tail, three-second margin; final dialogue retained"
+      }
+    ],
+    "S01E03": [
+      {
+        "start": 80.957,
+        "end": 135.218,
+        "reason": "Opening song and adjacent caption-free transition"
+      },
+      {
+        "start": 1363.029,
+        "end": 1371.424,
+        "reason": "Post-caption credit tail, three-second margin; final dialogue retained"
+      }
+    ],
+    "S01E04": [
+      {
+        "start": 56.94,
+        "end": 109.276,
+        "reason": "Opening song and adjacent caption-free transition"
+      },
+      {
+        "start": 1360.402,
+        "end": 1366.848,
+        "reason": "Post-caption credit tail, three-second margin; final dialogue retained"
+      }
+    ],
+    "S01E05": [
+      {
+        "start": 52.926,
+        "end": 108.733,
+        "reason": "Opening song and adjacent caption-free transition"
+      },
+      {
+        "start": 1357.268,
+        "end": 1366.432,
+        "reason": "Post-caption credit tail, three-second margin; final dialogue retained"
+      }
+    ],
+    "S01E06": [
+      {
+        "start": 52.891,
+        "end": 99.933,
+        "reason": "Opening song and adjacent caption-free transition"
+      },
+      {
+        "start": 1239.952,
+        "end": 1248.32,
+        "reason": "Post-caption credit tail, three-second margin; final dialogue retained"
+      }
+    ],
+    "S01E07": [
+      {
+        "start": 45.554,
+        "end": 102.144,
+        "reason": "Opening song and adjacent caption-free transition"
+      },
+      {
+        "start": 1346.305,
+        "end": 1355.424,
+        "reason": "Post-caption credit tail, three-second margin; final dialogue retained"
+      }
+    ],
+    "S01E08": [
+      {
+        "start": 49.048,
+        "end": 97.222,
+        "reason": "Opening song and adjacent caption-free transition"
+      },
+      {
+        "start": 1360.438,
+        "end": 1366.848,
+        "reason": "Post-caption credit tail, three-second margin; final dialogue retained"
+      }
+    ],
+    "S01E09": [
+      {
+        "start": 64.897,
+        "end": 115.74,
+        "reason": "Opening song and adjacent caption-free transition"
+      },
+      {
+        "start": 1329.532,
+        "end": 1366.848,
+        "reason": "Post-caption credit tail, three-second margin; final dialogue retained"
+      }
+    ],
+    "S01E10": [
+      {
+        "start": 58.932,
+        "end": 110.944,
+        "reason": "Opening song and adjacent caption-free transition"
+      },
+      {
+        "start": 1357.81,
+        "end": 1367.424,
+        "reason": "Post-caption credit tail, three-second margin; final dialogue retained"
+      }
+    ],
+    "S01E11": [
+      {
+        "start": 41.331,
+        "end": 89.631,
+        "reason": "Opening song and adjacent caption-free transition"
+      },
+      {
+        "start": 1361.105,
+        "end": 1366.432,
+        "reason": "Post-caption credit tail, three-second margin; final dialogue retained"
+      }
+    ],
+    "S01E12": [
+      {
+        "start": 59.975,
+        "end": 109.4,
+        "reason": "Opening song and adjacent caption-free transition"
+      },
+      {
+        "start": 1358.186,
+        "end": 1368.416,
+        "reason": "Post-caption credit tail, three-second margin; final dialogue retained"
+      }
+    ],
+    "S01E13": [
+      {
+        "start": 35.242,
+        "end": 88.922,
+        "reason": "Opening song and adjacent caption-free transition"
+      },
+      {
+        "start": 1359.645,
+        "end": 1367.424,
+        "reason": "Post-caption credit tail, three-second margin; final dialogue retained"
+      }
+    ],
+    "S01E14": [
+      {
+        "start": 67.566,
+        "end": 118.034,
+        "reason": "Opening song and adjacent caption-free transition"
+      },
+      {
+        "start": 1361.439,
+        "end": 1367.84,
+        "reason": "Post-caption credit tail, three-second margin; final dialogue retained"
+      }
+    ],
+    "S01E15": [
+      {
+        "start": 25.983,
+        "end": 84.834,
+        "reason": "Opening song and adjacent caption-free transition"
+      },
+      {
+        "start": 1361.272,
+        "end": 1367.424,
+        "reason": "Post-caption credit tail, three-second margin; final dialogue retained"
+      }
+    ],
+    "S01E16": [
+      {
+        "start": 42.791,
+        "end": 93.093,
+        "reason": "Opening song and adjacent caption-free transition"
+      },
+      {
+        "start": 1358.978,
+        "end": 1368.416,
+        "reason": "Post-caption credit tail, three-second margin; final dialogue retained"
+      }
+    ],
+    "S01E17": [
+      {
+        "start": 1344.672,
+        "end": 1367.424,
+        "reason": "Post-caption credit tail, three-second margin; final dialogue retained"
+      }
+    ],
+    "S01E18": [
+      {
+        "start": 57.347,
+        "end": 108.817,
+        "reason": "Opening song and adjacent caption-free transition"
+      },
+      {
+        "start": 1356.184,
+        "end": 1366.432,
+        "reason": "Post-caption credit tail, three-second margin; final dialogue retained"
+      }
+    ],
+    "S01E19": [
+      {
+        "start": 22.896,
+        "end": 74.949,
+        "reason": "Opening song and adjacent caption-free transition"
+      },
+      {
+        "start": 1356.726,
+        "end": 1363.424,
+        "reason": "Post-caption credit tail, three-second margin; final dialogue retained"
+      }
+    ],
+    "S01E20": [
+      {
+        "start": 48.505,
+        "end": 101.851,
+        "reason": "Opening song and adjacent caption-free transition"
+      },
+      {
+        "start": 1357.685,
+        "end": 1364.416,
+        "reason": "Post-caption credit tail, three-second margin; final dialogue retained"
+      }
+    ],
+    "S01E21": [
+      {
+        "start": 68.657,
+        "end": 120.037,
+        "reason": "Opening song and adjacent caption-free transition"
+      },
+      {
+        "start": 1354.484,
+        "end": 1365.44,
+        "reason": "Post-caption credit tail, three-second margin; final dialogue retained"
+      }
+    ],
+    "S01E22": [
+      {
+        "start": 70.527,
+        "end": 120.703,
+        "reason": "Opening song and adjacent caption-free transition"
+      },
+      {
+        "start": 1355.933,
+        "end": 1363.84,
+        "reason": "Post-caption credit tail, three-second margin; final dialogue retained"
+      }
+    ],
+    "S01E23": [
+      {
+        "start": 78.503,
+        "end": 126.376,
+        "reason": "Opening song and adjacent caption-free transition"
+      },
+      {
+        "start": 1358.57,
+        "end": 1363.84,
+        "reason": "Post-caption credit tail, three-second margin; final dialogue retained"
+      }
+    ],
+    "S01E24": [
+      {
+        "start": 95.636,
+        "end": 147.605,
+        "reason": "Opening song and adjacent caption-free transition"
+      },
+      {
+        "start": 1315.768,
+        "end": 1365.44,
+        "reason": "Post-caption credit tail, three-second margin; final dialogue retained"
+      }
+    ]
+  },
+  "inputs": {
+    "S01E01": {
+      "samples": 21911040,
+      "audio_sha256": "102b293e314dcdd113bf924d1ee5fbdc57798c416788559c115a260b5bf7d6cb",
+      "captions_sha256": "6c83ef9e3e4bb419f801f7510e6cfd1297375fbdc38345b1c79b8acc24ace984"
+    },
+    "S01E02": {
+      "samples": 21959168,
+      "audio_sha256": "410dbaad69e2ee198bfca94a4ab94a79e5d24aab0eb826de2c1d7abbb0ffa283",
+      "captions_sha256": "5174942b80ea0ecb2936a2ebec69b487fae1b5c442ecff50cec602b8fe8a07b6"
+    },
+    "S01E03": {
+      "samples": 21942784,
+      "audio_sha256": "7902eeae207071d18edb4fb066ceca5686cdd7f6d5f55c74f0d47a1fee482796",
+      "captions_sha256": "35a975422231a93db75c3bf4f260d53880da08dce96ed97accde4b33d261a1a4"
+    },
+    "S01E04": {
+      "samples": 21869568,
+      "audio_sha256": "31d99e313c4aae6d9c568b32cfa5fb12dc327a54b87aea2c425d9cef71aae4ed",
+      "captions_sha256": "b2d9b9efa818d976dae5fc23394d327bb0d0ffcbf8aa5d9c4169010de00b7763"
+    },
+    "S01E05": {
+      "samples": 21862912,
+      "audio_sha256": "79dd137b5f412d0b016ab7ffddb250a31fbe6dcb289751e152e23faaa06709bf",
+      "captions_sha256": "8e37ce15bf4c16db00e8fdd98ae0ea5db4c0467f380d388da4ca89cbb3fc3555"
+    },
+    "S01E06": {
+      "samples": 19973120,
+      "audio_sha256": "8a64543b517d9a979bfa0c97a1b48e4bddf76ec8eaaea5ccbabfd2355e4754f7",
+      "captions_sha256": "3a0f746510fc8f8f4f801c763655c762db919605b8d9c837aec977263535d349"
+    },
+    "S01E07": {
+      "samples": 21686784,
+      "audio_sha256": "eb9f8b68243703396e7e229e1118d2067d4225c5f93aa80cfc390b6d5f21677d",
+      "captions_sha256": "2c209b1d0e37f67a23241fc9a19eea2f8248d3d4b5057a9ae46b3717e2c5d473"
+    },
+    "S01E08": {
+      "samples": 21869568,
+      "audio_sha256": "65c56b193b1b089aa49b4c70751c50b0715a936d82f45eccf62e63eb4a6d2c1f",
+      "captions_sha256": "3340211af37cfa6970d906d39285dc2cdea201f57b7a7b2d5d66f07ad9868795"
+    },
+    "S01E09": {
+      "samples": 21869568,
+      "audio_sha256": "a0efdd406d3c057184afd90ebcb9b33a34f5a2b53c9820fc283aa9f33bfec1ee",
+      "captions_sha256": "b19c6555b71e40516b676d12bac38a2fb7178a1ac1447b37a8b5af4283e65f14"
+    },
+    "S01E10": {
+      "samples": 21878784,
+      "audio_sha256": "92fc2d2d8c7d777a91dcec6bb3e166a072593aef5a3601f5bc474aa4180638d1",
+      "captions_sha256": "9a7666f32d7b13ee3e67d5124a7f2bb674d9b113b384a995019059a4b0f5e1ae"
+    },
+    "S01E11": {
+      "samples": 21862912,
+      "audio_sha256": "752b6f920e13b2ead632e2ff1c144645d0c5014523c901408dde177fcba6b136",
+      "captions_sha256": "40cee34f2bbd83ec560e63d3df7733d1de8e2fbede905041b74db1ad43533e91"
+    },
+    "S01E12": {
+      "samples": 21894656,
+      "audio_sha256": "edd483bc073fceb740c6ee6afc845d16e1d907cb7507afd186656e136dbceeb7",
+      "captions_sha256": "0eb231a66cb814ddecf3acf96737ad50acb8e85c8988e568362ba0bc9fe515b2"
+    },
+    "S01E13": {
+      "samples": 21878784,
+      "audio_sha256": "6ddbf626eecff91c2795ea523554c0a12891ec979cdc12c53c5ef3629247bd4d",
+      "captions_sha256": "688f6a40e2286a5668e524a02fc9fa72130accca1f703672da162c3a3378b8e5"
+    },
+    "S01E14": {
+      "samples": 21885440,
+      "audio_sha256": "fcff6c38757a48edf293e85e45eadeb49dd654d628483e3b82d165a789f1eba0",
+      "captions_sha256": "12dc51feede01e648ef8575215655b8bdeab96f7b6659fc4cf3763091de53707"
+    },
+    "S01E15": {
+      "samples": 21878784,
+      "audio_sha256": "08d37b014d20376598055f782aaf01d9fd67a6a3041a91ed49a9368dd2e42a07",
+      "captions_sha256": "75f4cb14a0abc27af4c111859a239cdd487fb8729de6109c763503fa269e03c6"
+    },
+    "S01E16": {
+      "samples": 21894656,
+      "audio_sha256": "9aeba98cb3c37ab3d9e740deeaae483d640d91ece0f2457c4276b5f1a3c05f82",
+      "captions_sha256": "ced984be2b1632d6538234d852569cda6968e0f3079d7f018dd470ecab736457"
+    },
+    "S01E17": {
+      "samples": 21878784,
+      "audio_sha256": "c26611a9f8e08c246c2f911d0e697daf2475458d34391f6e17f35d4fc44ec539",
+      "captions_sha256": "41d800b18c163a65279112bafd6e4cf4aef999034f25145e5c8afd77df075877"
+    },
+    "S01E18": {
+      "samples": 21862912,
+      "audio_sha256": "e252038c8be0f722e6ccf8ab39f24271f7876f0def1769f548da4a464419fd4c",
+      "captions_sha256": "792bc7132b0442e008ea550f26ecd4959bb5a5f4204d55d9487d38738077f6f7"
+    },
+    "S01E19": {
+      "samples": 21814784,
+      "audio_sha256": "a3363e242b957d60add5e483402f694bb87a0cac68ed35603b4df37ffb79a193",
+      "captions_sha256": "3914e22f1d6b0e74624c809b5e56e8191653d2676675dbdf0389327ba8ea7a9b"
+    },
+    "S01E20": {
+      "samples": 21830656,
+      "audio_sha256": "7aa788ee4bd8befbebcdc020fbab6a01677398f681c866ef220268ebd233e58e",
+      "captions_sha256": "8f12a1a49b6cb0a59ed2d7db17fc341d2db607cf571933a84f71077ac11fb7e1"
+    },
+    "S01E21": {
+      "samples": 21847040,
+      "audio_sha256": "b2c8bce154445563666904f52bdc1cee36903bad7af9884ba422b66979169d14",
+      "captions_sha256": "e21ac391520ded65ac1c83a3738fa50b34ce76b1257fb01ebd454b43d3a21c00"
+    },
+    "S01E22": {
+      "samples": 21821440,
+      "audio_sha256": "1378e670ad3a25b16723856e0dbf3fcaad2770e187b7dea22890193128e25e77",
+      "captions_sha256": "170d4d40f60c10bb1f27f390f6cfc6b86968b469fcff09c30489bc60e3989741"
+    },
+    "S01E23": {
+      "samples": 21821440,
+      "audio_sha256": "3284bc671df9e931847e7e6d074b526c87066b02262e1b8969246f444d7a6730",
+      "captions_sha256": "5b8b1287f52dbbf8f16e871458ff95e9a4edc843485b9dbc765fd1a7cf24c719"
+    },
+    "S01E24": {
+      "samples": 21847040,
+      "audio_sha256": "9fc75e076b77a649d40be6dd808ac4ef25ef7c7bfd2d4d3c8e07f2a1e4a463b9",
+      "captions_sha256": "405daf271affdc93948cc883e0efefe9704f808e31ab0019e0810289380edad9"
+    }
+  }
+}

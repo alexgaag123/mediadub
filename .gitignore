@@ -11,6 +11,7 @@
 !/test_pipeline.py
 !/eval_*.py
 !/tools/
+!/speech2text/
 !/eda/
 !/data/
 !/third_party/
