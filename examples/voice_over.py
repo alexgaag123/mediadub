@@ -5,11 +5,10 @@ import media_dub.common.database as db
 from media_dub.common.s3_sevice import (
     generate_temporary_url,
     get_s3_client,
-    load_text_from_s3,
     save_text_to_s3,
 )
 from media_dub.pipeline.celery_app import app
-from media_dub.pipeline.stage_voice_over.tasks import voice_over_task
+from celery import signature
 
 if __name__ == "__main__":
     db.init_db()
@@ -28,10 +27,12 @@ if __name__ == "__main__":
 
     print("Uploaded everything")
 
-    voice_over_task.apply_async(
-        args=[seg_id], queue="voice_over_queue"
-    )
+    workflow = signature("media_dub.stage_voice_over",
+                         queue="voice_over_queue",
+                         kwargs={"segment_id": seg_id},
+                         app=app)
 
+    workflow.apply_async()
 
     print("Submitted job")
 

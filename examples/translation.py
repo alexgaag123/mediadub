@@ -2,9 +2,9 @@ import os
 import time
 
 import media_dub.common.database as db
-from media_dub.common.s3_sevice import generate_temporary_url, load_text_from_s3, save_text_to_s3
+from media_dub.common.s3_sevice import generate_temporary_url, save_text_to_s3
 from media_dub.pipeline.celery_app import app
-from media_dub.pipeline.stage_translation.tasks import translation_task
+from celery import signature
 
 if __name__ == "__main__":
     db.init_db()
@@ -23,9 +23,15 @@ if __name__ == "__main__":
 
     save_text_to_s3("english-text", f"{seg_id}.txt", text)
 
-    translation_task.apply_async(
-        args=[seg_id], queue="translation_queue"
-    )
+
+
+    workflow = signature("media_dub.stage_translation",
+                         queue="translation_queue",
+                         kwargs={"segment_id": seg_id},
+                         app=app)
+    
+    workflow.apply_async()
+
     print("submitted job")
 
     url = generate_temporary_url("english-text", f"{seg_id}.txt")
