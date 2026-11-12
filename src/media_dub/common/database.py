@@ -374,7 +374,17 @@ def set_segment_stage_started_time(session, stage_type: SegmentStageType,
     session.execute(stmt)
     session.flush()
 
-def set_stage_finished_time(session, stage_type: SegmentStageType,
+def set_job_stage_finished_time(session, stage_type: JobStageType,
+                            job_id: int, finished_at: datetime | None = None) -> None:
+    stmt = (
+        update(JobStage)
+        .where(JobStage.stage == stage_type, JobStage.job_id == job_id)
+        .values(finished_at=finished_at if finished_at else func.now())
+    )
+    session.execute(stmt)
+    session.flush()
+
+def set_segment_stage_finished_time(session, stage_type: SegmentStageType,
                             segment_id: int, finished_at: datetime | None = None) -> None:
     stmt = (
         update(SegmentStage)

@@ -86,12 +86,12 @@ def translation_task(segment_id: int) -> None:
         save_text_to_s3("russian-text", str(segment_id) + ".txt", translated_text)
 
         with db.get_db_session() as session:
-            db.set_stage_finished_time(session, db.SegmentStageType.TRANSLATION, segment_id)
+            db.set_segment_stage_finished_time(session, db.SegmentStageType.TRANSLATION, segment_id)
             db.update_segment_stage_status(session, db.SegmentStageType.TRANSLATION,
                                    segment_id, db.WorkStatus.FINISHED)
 
 
-        return translated_text
+        return segment_id
 
     except Exception as e:
         app.logger.error(f"Error in translation: {e}")

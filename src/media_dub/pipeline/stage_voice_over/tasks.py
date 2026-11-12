@@ -3,6 +3,7 @@ import tempfile
 
 import torch
 from omnivoice import OmniVoice
+import soundfile as sf
 
 import media_dub.common.database as db
 from celery.signals import worker_process_init
@@ -18,7 +19,6 @@ class VoiceOverWorkerModelOmniVoice:
                                                device_map="cuda:0", dtype=torch.float16)
 
     def voice_over(self, path_to_reference: str, text: str, savepath: str, duration: int) -> str:
-        import soundfile as sf
 
         generated_audio = self.model.generate(text=text, ref_audio=path_to_reference,
                                               duration=duration)
@@ -77,7 +77,7 @@ def voice_over_task(segment_id: int) -> None:
             s3.upload_file(result_wav.name, "russian-segment-voice", f"{segment_id}.wav")
 
         with db.get_db_session() as session:
-            db.set_stage_finished_time(session, db.SegmentStageType.VOICE_OVER, segment_id)
+            db.set_segment_stage_finished_time(session, db.SegmentStageType.VOICE_OVER, segment_id)
             db.update_segment_stage_status(session, db.SegmentStageType.VOICE_OVER,
                                    segment_id, db.WorkStatus.FINISHED)
 
