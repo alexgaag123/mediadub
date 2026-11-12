@@ -1,6 +1,9 @@
 import logging
 import tempfile
 
+import torch
+from omnivoice import OmniVoice
+
 import media_dub.common.database as db
 from celery.signals import worker_process_init
 from media_dub.common.s3_sevice import get_s3_client, load_text_from_s3
@@ -9,8 +12,6 @@ from media_dub.pipeline.celery_app import app
 
 class VoiceOverWorkerModelOmniVoice:
     def __init__(self):
-        import torch
-        from omnivoice import OmniVoice
 
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         self.model = OmniVoice.from_pretrained("drbaph/OmniVoice-bf16",
