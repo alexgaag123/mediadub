@@ -911,6 +911,10 @@ dependencies = [
 ]
 
 [package.dev-dependencies]
+audio-merge = [
+    { name = "audioop-lts" },
+    { name = "pydub" },
+]
 translation = [
     { name = "ctranslate2" },
     { name = "huggingface-hub" },
@@ -936,6 +940,10 @@ requires-dist = [
 ]
 
 [package.metadata.requires-dev]
+audio-merge = [
+    { name = "audioop-lts", specifier = ">=0.2.2" },
+    { name = "pydub", specifier = ">=0.25.1" },
+]
 translation = [
     { name = "ctranslate2", specifier = ">=4.0.0" },
     { name = "huggingface-hub", specifier = ">=0.23.0" },

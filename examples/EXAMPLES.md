@@ -31,7 +31,7 @@ uv sync --group translation
 
 Сначала необходимо запустить celery воркера, который будет слушать очередь задач на перевод, читать файл из хранилища, засылать его строки в модель на перевод, сохранять новый файл. В процессе также обновлять статусы бд. Делается это следующей командой.
 ```bash
-WORKER_TYPE="translation" uv run --group translation --env-file .env  celery -A media_dub.pipeline.celery_app worker -Q translation_queue -P solo -l info
+WORKER_TYPE="translation" uv run --group translation --env-file .env  celery -A media_dub.pipeline.celery_app worker -Q translation_queue -P solo -l info -n translation@%h
 ``` 
   Теперь, в другом терминале можно отправить задачу на первод.
 ```bash
@@ -46,9 +46,19 @@ uv sync --group voice-over
 ```
 Аналогично прошлому пункту - сначала запускаем воркера.
 ```bash
-WORKER_TYPE="voice-over" uv run --group voice-over --env-file .env  celery -A media_dub.pipeline.celery_app worker -Q voice_over_queue -P solo -l info
+WORKER_TYPE="voice-over" uv run --group voice-over --env-file .env  celery -A media_dub.pipeline.celery_app worker -Q voice_over_queue -P solo -l info -n voice-over@%h
 ```
 Теперь, в другом терминале можно отправить задачу на озвучку.
 ```bash
 uv run --env-file .env python ./examples/voice_over.py
+```
+Также, можно дполнительн запустить воркера, который соединяет разыне сегменты в одну аудио дорожку
+
+```bash
+WORKER_TYPE="audio-merge" uv run --group audio-merge --env-file .env  celery -A media_dub.pipeline.celery_app worker -Q merge_queue -P solo -l info -n audio-merge@%h
+```
+И заслать целый пайплайн - сначала 2 фразы озвучатся, затем соединятся в единую дорожку
+
+```bash
+uv run --env-file .env python ./examples/voice_merge.py
 ```

@@ -37,7 +37,7 @@ def init_translation_model(**kwargs):
 
 
 @app.task(name="media_dub.stage_voice_over", queue="voice_over_queue", acks_late=True)
-def voice_over_task(segment_id: int) -> None:
+def voice_over_task(segment_id: int) -> int:
     try:
         worker_model = getattr(app, "voice_over_model", None)
 

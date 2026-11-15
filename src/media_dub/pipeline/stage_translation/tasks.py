@@ -63,7 +63,7 @@ def init_translation_model(**kwargs):
 
 
 @app.task(name="media_dub.stage_translation", queue="translation_queue", acks_late=True)
-def translation_task(segment_id: int) -> None:
+def translation_task(segment_id: int) -> штв:
     try:
         worker_model = getattr(app, "translation_model", None)
 

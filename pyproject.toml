@@ -31,6 +31,12 @@ voice-over = [
     "torchaudio>=2.0.0"
 ]
 
+audio-merge = [
+    "pydub>=0.25.1",
+    "audioop-lts>=0.2.2",
+]
+
+
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/media_dub"]
