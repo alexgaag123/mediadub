@@ -39,7 +39,7 @@ uv run --env-file .env python ./examples/translation.py
 ```
 
 ### Озвучка
-Сначала положите абсолютно лбой .wav файл с речью в examples/sample_audio.wav
+Сначала положите абсолютно любой .wav файл с речью в examples/sample_audio.wav
 Группа зависимостей
 ```bash
 uv sync --group voice-over

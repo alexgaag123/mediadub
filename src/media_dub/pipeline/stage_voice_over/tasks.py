@@ -79,8 +79,13 @@ def voice_over_task(segment_id: int) -> None:
         with db.get_db_session() as session:
             db.set_segment_stage_finished_time(session, db.SegmentStageType.VOICE_OVER, segment_id)
             db.update_segment_stage_status(session, db.SegmentStageType.VOICE_OVER,
-                                   segment_id, db.WorkStatus.FINISHED)
+                                           segment_id, db.WorkStatus.FINISHED)
 
+            segment = db.get_segment_by_id(session, segment_id)
+
+            db.set_job_stage_finished_time(session, db.JobStageType.PROCESSING_SEGMENTS, segment.job_id)
+            db.update_job_stage_status(session, db.JobStageType.PROCESSING_SEGMENTS,
+                                       segment.job_id, db.WorkStatus.FINISHED)
 
         return segment_id
 
@@ -89,5 +94,10 @@ def voice_over_task(segment_id: int) -> None:
         with db.get_db_session() as session:
             db.update_segment_stage_status(session, db.SegmentStageType.VOICE_OVER,
                                    segment_id, db.WorkStatus.FAILED)
+
+            segment = db.get_segment_by_id(session, segment_id)
+
+            db.update_job_stage_status(session, db.JobStageType.PROCESSING_SEGMENTS,
+                                                   segment.job_id, db.WorkStatus.FAILED)
 
         raise e

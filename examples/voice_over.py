@@ -17,7 +17,8 @@ if __name__ == "__main__":
 
     with db.get_db_session() as session:
         id = db.insert_job(session)
-        seg_id = db.insert_segment(session, id, 1234, 6214)
+        job_stage_res = db.insert_job_stage(session, db.JobStageType.PROCESSING_SEGMENTS, id, db.WorkStatus.IN_PROGRESS)
+        seg_id = db.insert_segment(session, id, 10000, 15000)
         seg_stage_res = db.insert_segment_stage(session, "Voice over", seg_id)
 
 
@@ -25,7 +26,7 @@ if __name__ == "__main__":
 
     save_text_to_s3("russian-text", f"{seg_id}.txt", "Привет! Озвучь меня пожалуйста! Спасибо!")
 
-    print("Uploaded everything")
+    print(f"Uploaded everything, seg_id: {seg_id}")
 
     workflow = signature("media_dub.stage_voice_over",
                          queue="voice_over_queue",
