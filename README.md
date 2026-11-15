@@ -186,6 +186,12 @@ Run it in Google Colab or Kaggle with a GPU and `HF_TOKEN` configured in Secrets
 Start with section 1. Setup, cache handling, and model limitations are described
 in the notebook. FLORES-200 is used only for analysis and evaluation.
 
+The final cell exports a single [HTML comparison](reports/tts-sidon-comparison.html)
+and its [JSON summary](reports/tts-sidon-summary.json), with full model names,
+paired reference modes (original / Sarulab Sidon v0.1), sample provenance,
+measurement counts, and reasons for skipped models. The report identifies its run;
+earlier notebook outputs and audio examples are preserved.
+
 ## Initial Experiment
 
 - **Dataset:** bazinga.
