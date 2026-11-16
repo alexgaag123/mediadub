@@ -1,0 +1,37 @@
+services:
+  worker-voice-over:
+    build:
+      context: ../../../
+      dockerfile: Dockerfile
+      args:
+        BASE_IMAGE: nvidia/cuda:12.4.1-runtime-ubuntu22.04
+        WORKER_GROUP: voice-over
+    container_name: media_dub_worker_voice_over
+    env_file:
+      - ../../../.env
+    environment:
+      WORKER_TYPE: voice-over
+      NVIDIA_VISIBLE_DEVICES: all
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility,video
+    volumes:
+      - huggingface_cache:/root/.cache/huggingface
+    shm_size: '2gb'
+    command: >
+      uv run --frozen --no-dev --group voice-over
+      celery -A media_dub.pipeline.celery_app worker
+      -Q voice_over_queue
+      -P solo
+      -l info
+      -n voice-over@%h
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    restart: unless-stopped
+
+volumes:
+  huggingface_cache:
+

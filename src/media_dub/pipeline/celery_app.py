@@ -1,5 +1,6 @@
 import os
 import urllib.parse
+import socket
 from celery import Celery
 
 RABBITMQ_USER = os.getenv("RABBITMQ_USER")
@@ -34,8 +35,20 @@ app = Celery(
     broker=broker_url,
     backend=DATABASE_URL,
     include=include_tasks,
+)
+
+app.conf.update(
     broker_heartbeat=0,
-    worker_prefetch_multiplier=1,
     broker_connection_retry_on_startup=True,
+    broker_transport_options={
+        "socket_keepalive": True,
+        "socket_keepalive_options": {
+            socket.TCP_KEEPIDLE: 20,
+            socket.TCP_KEEPINTVL: 10,
+            socket.TCP_KEEPCNT: 5,
+        },
+    },
+    worker_prefetch_multiplier=1,
     task_acks_late=True,
+    worker_cancel_long_running_tasks_on_connection_loss=False,
 )
